@@ -1,0 +1,66 @@
+@-webkit-keyframes fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
+@-moz-keyframes    fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
+@-o-keyframes      fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
+@keyframes         fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
+
+
+
+.avatar {
+    max-width: 230px;
+    width: 100%;
+    max-height: 300px;
+}
+
+.items {
+    padding: 10px;
+    max-width: 250px;
+
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #333;
+    margin: 0 10px 10px;
+
+    -webkit-animation: fade-in 0.3s ease-in; /* Safari 4+ */
+    -moz-animation: fade-in 0.3s ease-in; /* Fx 5+ */
+    -o-animation: fade-in 0.3s ease-in; /* Opera 12+ */
+    animation: fade-in 0.3s ease-in; /* IE 10+, Fx 29+ */
+}
+
+.on {
+    background-color: rgba(129, 224, 116, 0.486);
+}
+
+.off {
+    background-color: rgba(224, 116, 116, 0.486);
+}
+
+.contacts {
+    display: flex;
+}
+
+.title {
+    margin-right: 20px;
+}
+
+.contactsName {
+    display: flex;
+    flex-direction: column;    
+}
+
+.contactsName a {
+    text-decoration: none;
+    color: #AAA;
+    margin-bottom: 2px;
+    transition: ease 0.2s;
+}
+
+.contacts a:hover {
+    color: rgb(51, 51, 51);
+    transform: scale(1.1) translate(+5%, +5%);
+}
+
+.status {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #AAA;
+}

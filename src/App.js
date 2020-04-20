@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Navbar from './components/Navbar/Navbar';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import Dialogs from './components/Dialogs/Dialogs';
+import UsersContainer from './components/Users/UsersContainer';
+import Footer from './components/Footer/Footer';
+import { Route } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return <>
+    <HeaderContainer />
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <Navbar />
+        <div className={styles.content}>
+          <Route path='/profile/:userId?' render={(props) => <ProfileContainer key={props.match.params.userId}/>} />
+          <Route path='/dialogs' render={() => <Dialogs />} />
+          <Route path='/users' render={() => <UsersContainer />} />
+        </div>
+      </main>
     </div>
-  );
+    <Footer />
+
+  </>
 }
 
 export default App;

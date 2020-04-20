@@ -1,0 +1,22 @@
+.container {
+    height: 100%;
+    padding: 0 20px;
+}
+
+
+
+.main {
+    max-width: 900px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #000;
+}
+
+.content {
+    width: 80%;
+    margin-left: 10px;
+}
