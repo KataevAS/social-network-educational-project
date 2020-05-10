@@ -1,8 +1,11 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { getUsers, getMoreUsers, setSelectedUsersPage } from '../../redux/users-reducer';
+import { getUsers, getMoreUsers, setSelectedUsersPage, followUser, unFollowUser } from '../../redux/users-reducer';
 import Users from './Users';
+import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
+
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -13,7 +16,7 @@ class UsersContainer extends React.Component {
         this.props.setSelectedUsersPage(1);
     }
 
-    showPage = (e) => {        
+    showPage = (e) => {
         this.props.getUsers(e.selected + 1);
         this.props.setSelectedUsersPage(e.selected + 1);
     };
@@ -23,7 +26,11 @@ class UsersContainer extends React.Component {
         this.props.setSelectedUsersPage(this.props.selectedUsersPage + 1);
     };
 
-    
+    toGoProfile = (userId) => {
+        this.props.history.push(`/profile/${userId}`);
+    };
+
+
 
     render() {
         return <Users
@@ -33,7 +40,10 @@ class UsersContainer extends React.Component {
             loading={this.props.loading}
             totalCount={this.props.totalCount}
             selectedUsersPage={this.props.selectedUsersPage}
-            isFetching={this.props.isFetching} />;
+            isFetching={this.props.isFetching}
+            toGoProfile={this.toGoProfile}
+            followUser={this.props.followUser}
+            unFollowUser={this.props.unFollowUser} />;
     }
 
 }
@@ -48,5 +58,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, { getUsers, getMoreUsers, setSelectedUsersPage })
+    connect(mapStateToProps, { getUsers, getMoreUsers, setSelectedUsersPage, followUser, unFollowUser}),
+    withRouter,
+    withAuthRedirect
 )(UsersContainer);

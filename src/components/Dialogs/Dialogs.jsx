@@ -1,4 +1,7 @@
 import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
 const Dialogs = (props) => {
     return (
@@ -6,4 +9,9 @@ const Dialogs = (props) => {
     );
 }
 
-export default Dialogs;
+
+
+export default compose(
+    connect(null, null),
+    withAuthRedirect
+    )(Dialogs);

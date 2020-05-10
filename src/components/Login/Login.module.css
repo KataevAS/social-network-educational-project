@@ -1,0 +1,29 @@
+.pageLogin {
+    width: fit-content;
+    padding: 20px 30px;
+
+    margin: 200px auto 20px auto;
+
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 20px;
+}
+
+.loginBtn {
+    display: block;
+    margin: 10px auto 0;
+}
+
+.checkbox {
+    font-size: 12px;
+}
+
+.invalidLogin {
+    width: fit-content;
+    margin: 0 auto;
+
+    color: rgb(255, 119, 119);
+}
+
+.invalid {
+    border: 1px solid rgb(255, 119, 119);
+}

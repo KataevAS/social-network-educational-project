@@ -1,8 +1,10 @@
 .navbar {
-    width: 150px;
+    min-width: 150px;
 
     display: flex;
     flex-direction: column;
+
+    margin-right: 10px;
 }
 
 .items {

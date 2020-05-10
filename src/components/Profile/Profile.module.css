@@ -4,16 +4,33 @@
 @keyframes         fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 
 
+.preloader{
+    display: block;
+    margin: 100px auto;
+}
+
+.profileInfo {
+    display: flex;
+}
+
+.profileInfoBlockOne {
+    min-width: 250px;
+}
+
+.profileInfoBlockTwo {
+    width: 100%;
+}
 
 .avatar {
     max-width: 230px;
     width: 100%;
     max-height: 300px;
+
+    border-radius: 10px;
 }
 
 .items {
     padding: 10px;
-    max-width: 250px;
 
     background-color: #fff;
     border-radius: 10px;

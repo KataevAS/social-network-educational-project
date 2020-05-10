@@ -1,27 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginOut } from '../../redux/auth-reducer';
 
-const Header = (props) => {
+const Header = () => {
+    const [menuStatus, setMenuStatus] = useState(false);
+
+    const userData = useSelector(state => state.auth);
+    const photo = useSelector(state => state.auth.authUser.photos);
+
+    const dispatch = useDispatch();
+
+    const handleClickMenu = () => {
+        if (menuStatus) {
+            setMenuStatus(false)
+        } else {
+            setMenuStatus(true);
+            clickOutside(styles.menuItems);
+        }
+    }
+
+    const handleClickLoginOut = () => {
+        dispatch(loginOut());
+    }
+
+    const clickOutside = (selector) => {
+        const el = document.querySelector("." + selector);
+        document.addEventListener('click', outsideEvtListener);
+        function outsideEvtListener(evt) {
+            if (evt.target === el) {
+                return document.removeEventListener('click', outsideEvtListener);
+            }
+            setMenuStatus(false)
+            document.removeEventListener('click', outsideEvtListener);
+        }
+    }
+
     return (
         <header className={styles.header}>
             <section className={styles.headerContent}>
 
-                <div className={styles.logoItems}>
-                    <a href='http://localhost:3000/'><div className={styles.logoImg}></div></a>
-                    <div className={styles.logoText}>social-network.samuraijs.com</div>
-                </div>
+
+                <a href='http://localhost:3000/' className={styles.logoItems}>
+                    <div className={styles.logoImg}></div>
+                    <div>social-network.samuraijs.com</div>
+                </a>
+
 
                 <div>
-                    {props.userData.isAuth
-                        ? props.userData.login
-                        : <NavLink to="/login" className={styles.navLink}>[ Login ]</NavLink>}
+                    {userData.isAuth
+                        ? <div className={styles.user} onClick={handleClickMenu}>
+                            <img src={photo.large ? photo.large : '../../assets/img/defaultAvatar.png'} alt='ava' className={styles.ava} />
+                            <div className={menuStatus ? styles.menuBtn + " " + styles.menuActive : styles.menuBtn}></div>
+                            < div className={menuStatus ? styles.menu + " " + styles.menuActive : styles.menu}>
+                                <div className={styles.menuItems}>Опция 1</div>
+                                <div className={styles.menuItems}>Профиль*</div>
+                                <div className={styles.menuItems} onClick={handleClickLoginOut}>Выйти</div>
+                            </div>
+                        </div>
+                        : <NavLink to="/login" className={styles.navLink}>[ Login ]</NavLink>
+                    }
                 </div>
 
             </section>
-        </header>
+
+        </header >
     );
 }
-
 
 export default Header;

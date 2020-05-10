@@ -17,19 +17,36 @@ export const profileAPI = {
 
     getStatus(userId) {
         return instance.get(`profile/status/${userId}`).then(response => response.data);
-    }
+    },
 }
 
 
 
 export const usersAPI = {
-    getUsers(pageNumber = 1, countUsers = 12) {
+    getUsers(pageNumber = 1, countUsers = 6) {
         return instance.get(`users?page=${pageNumber}&count=${countUsers}`);
-    }
+    },
+
+    followUser(userId) {
+        return instance.post(`/follow/${userId}`).then(response => response.data);
+    },
+
+    unFollowUser(userId) {
+        return instance.delete(`/follow/${userId}`).then(response => response.data);
+    },
 }
 
 export const authAPI = {
+
+    loginIn(email, password, rememberMe) {
+        return instance.post(`/auth/login`, {email, password, rememberMe}).then(response => response.data);
+    },
+
+    loginOut() {
+        return instance.delete(`/auth/login`).then(response => response.data);
+    },
+    
     getUserData() {
-        return instance.get(`auth/me`);
+        return instance.get(`auth/me`).then(response => response.data);
     }
 }

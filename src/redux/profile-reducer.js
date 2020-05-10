@@ -1,8 +1,4 @@
-import { profileAPI } from "../api/api";
-
-const SET_PROFILE = 'SET_PROFILE';
-const SET_STATUS = 'SET_STATUS';
-const TOGGLE_ISFETCHING = 'TOGGLE_ISFETCHING';
+import * as TODO from '../constants/constants';
 
 
 let initialState = {
@@ -10,17 +6,17 @@ let initialState = {
     lookingForAJob: false,
     lookingForAJobDescription: "",
     contacts: {
-        github: "",
-        vk: "",
-        facebook: "",
-        instagram: "",
-        twitter: "",
-        website: "",
-        youtube: "",
-        mainLink: "",
+        github: null,
+        vkontakte: null,
+        facebook: null,
+        instagram: null,
+        twitter: null,
+        website: null,
+        youtube: null,
+        mainLink: null
     },
     name: "",
-    status: "I can do it!",
+    status: "",
     photos: {
         small: null,
         large: null
@@ -33,50 +29,33 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case SET_PROFILE: {
-            return { ...state, ...action.profile };
+        case TODO.SET_PROFILE: {
+            const obj = action.profile.contacts;
+            const arrContacts = Object.keys(obj).reduce((acc, key) => {
+                if (obj[key]) {
+                    return (key === 'vk') ? { ...acc, 'vkontakte': obj[key] } : { ...acc, [key]: obj[key] };
+                }
+                return acc;
+            }, {});
+            return { ...state, ...action.profile, contacts: arrContacts};
         }
 
-        case SET_STATUS: {
+        case TODO.SET_STATUS: {
             return { ...state, status: action.status };
         }
 
-        case TOGGLE_ISFETCHING: {
-            return { ...state, isFetching: !state.isFetching };
+        case TODO.ON_ISFETCHING: {
+            return { ...state, isFetching: true };
+        }
+
+        case TODO.OFF_ISFETCHING: {
+            return { ...state, isFetching: false };
         }
 
         default: return state;
     }
 }
 
-const setUserProfile = (profile) => {
-    return {
-        type: SET_PROFILE,
-        profile: { ...profile },
-        contacts: { ...profile.contacts }
-    }
-};
-
-const setUserStatus = (status) => {
-    return {
-        type: SET_STATUS,
-        status
-    }
-};
-
-const toggleIsFetching = () => ({type: TOGGLE_ISFETCHING});
-
-
-export const getUserProfile = (userId) => (dispatch) => {
-    dispatch(toggleIsFetching());
-    if (!userId) { userId = "7064"; }
-    profileAPI.getProfile(userId).then((response) => {
-        dispatch(setUserProfile(response));
-        dispatch(toggleIsFetching());
-    });
-    profileAPI.getStatus(userId)
-        .then(response => dispatch(setUserStatus(response)));
-}
 
 
 export default profileReducer;

@@ -7,8 +7,7 @@ import Button from '../common/Button';
 
 
 const Users = (props) => {
-    let countPage = Math.ceil((props.totalCount) / 12);
-
+    let countPage = Math.ceil((props.totalCount) / 6);
     return (
         <div>
             <ReactPaginate
@@ -29,7 +28,15 @@ const Users = (props) => {
                 nextLinkClassName={styles.paginateLink} />
 
             <div className={styles.users}>
-                {props.isFetching ? <Preloader className={styles.preloader} /> : props.users.map(u => <User user={u} key={u.id} />)}
+                {props.isFetching
+                    ? <Preloader className={styles.preloader} />
+                    : props.users
+                        .map(u => <User
+                            user={u}
+                            toGoProfile={props.toGoProfile}
+                            followUser={props.followUser}
+                            unFollowUser={props.unFollowUser}
+                            key={u.id} />)}
             </div>
 
             {props.selectedUsersPage !== countPage &&

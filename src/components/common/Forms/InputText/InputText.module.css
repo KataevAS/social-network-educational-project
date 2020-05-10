@@ -1,0 +1,29 @@
+.textInput {
+    width: 200px;
+    height: 25px;
+
+    border: 1px solid #AAA;
+    border-radius: 5px;
+
+    margin: 10px 10px 10px 0;
+    padding: 0 5px;
+}
+
+.textInputerror{
+    border: 2px solid rgb(255, 133, 133);
+}
+
+.error {
+    display: inline;
+    position: absolute;
+
+    margin-top: 35px;
+    padding: 3px;
+
+    font-size: 13px;
+    color: rgb(255, 62, 62);
+
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #AAA;
+}

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import styles from './Button.module.css';
 
-export const Button = ({
+const Button = ({
     children = 'Button',
     onClick = () => { },
     className,
@@ -36,3 +36,5 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     active: PropTypes.bool
 }
+
+export default Button;

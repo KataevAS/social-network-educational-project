@@ -21,6 +21,10 @@
 .logoItems {
     display: flex;
     align-items: flex-end;
+
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 2px 2px 3px #000;
 }
 
 .logoImg {
@@ -33,10 +37,6 @@
     margin-right: 10px;
 }
 
-.logoText {
-    text-shadow: 2px 2px 3px #000;
-}
-
 .navLink {
     color: white;
     text-decoration: none;
@@ -44,4 +44,69 @@
 
 .navLink:hover {
     color: rgb(160, 160, 160);
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.ava {
+    width: 40px;
+    border-radius: 25px;
+}
+
+.menuBtn {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+
+    width: 7px;
+    height: 7px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+
+    transform: rotate(45deg);
+
+    transition: .2s ease;
+}
+
+.menu {
+    position: absolute;
+    top: 46px;
+    right: 0;
+
+    width: 150px;
+    max-height: 0;
+    overflow: hidden;
+
+    background-color: #333;
+    border-radius: 10px;
+
+    transition: max-height .3s ease;
+}
+
+.menu.menuActive{
+    max-height: 100vh;
+    transition: max-height .3s ease;
+}
+
+.menuBtn.menuActive {
+    transform: rotate(135deg);
+}
+
+.menuItems {
+    height: 30px;
+    text-align: center;
+
+    border: 1px solid #AAA;
+    padding: 5px 0;
+}
+
+.menuItems:hover {
+    color: #AAA;
 }
