@@ -58,6 +58,12 @@
 .ava {
     width: 40px;
     border-radius: 25px;
+
+    transition: .4s ease-in;
+}
+
+.ava:hover {
+    transform: rotate(360deg);
 }
 
 .menuBtn {

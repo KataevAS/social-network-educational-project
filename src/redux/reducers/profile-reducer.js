@@ -17,6 +17,7 @@ let initialState = {
     },
     name: "",
     status: "",
+    aboutMe: "",
     photos: {
         small: null,
         large: null

@@ -5,6 +5,7 @@ const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';
 const DELETE_USER_DATA = 'DELETE_USER_DATA';
 const OFF_LOADING = 'OFF_LOADING';
 const ON_LOADING = 'ON_LOADING';
+const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
 
 
 let initialState = {
@@ -63,6 +64,13 @@ const setUserData = (user) => {
         user
     }
 };
+
+const updateUserData = (user) => {
+    return {
+        type: UPDATE_USER_DATA,
+        user
+    }
+};
 //////////////////////////////////////////////////////////////////////
 export const firstLoadingSPA = () => (dispatch) => {
     authAPI.getUserData()
@@ -105,7 +113,11 @@ export const loginOut = () => (dispatch) => {
         })
 }
 //////////////////////////////////////////////////////////////////////
-
+export const editProfileData = (profile) => (dispatch) => {
+    return profileAPI.setProfileData(profile).then(res => {
+        dispatch(updateUserData(res));
+    });
+}
 
 
 

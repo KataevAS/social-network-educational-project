@@ -55,7 +55,9 @@ const Header = () => {
                             <img src={photo.large ? photo.large : defaultAvatar} alt='ava' className={styles.ava} />
                             <div className={menuStatus ? styles.menuBtn + " " + styles.menuActive : styles.menuBtn}></div>
                             < div className={menuStatus ? styles.menu + " " + styles.menuActive : styles.menu}>
-                                <div className={styles.menuItems}>Настройки профиля</div>
+                                <NavLink to="/editprofile" className={styles.navLink}>
+                                    <div className={styles.menuItems}>Настройки профиля</div>
+                                </NavLink>
                                 <div className={styles.menuItems} onClick={handleClickLoginOut}>Выйти</div>
                             </div>
                         </div>

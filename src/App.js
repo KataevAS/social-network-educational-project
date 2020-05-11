@@ -10,6 +10,7 @@ import Users from './components/Users/Users';
 import Footer from './components/Footer/Footer';
 import { firstLoadingSPA } from './redux/reducers/auth-reducer';
 import { useSelector, useDispatch } from 'react-redux';
+import EditProfile from './components/EditProfile/EditProfile';
 
 const App = () => {
   let loading = useSelector(state => state.auth.loading);
@@ -34,6 +35,7 @@ const App = () => {
               <Route path='/dialogs' component={() => <Dialogs />} />
               <Route path='/users' component={() => <Users />} />
               <Route path='/login' component={() => <Login />} />
+              <Route path='/editprofile' component={() => <EditProfile />} />
             </Switch>
           </div>
         </main>

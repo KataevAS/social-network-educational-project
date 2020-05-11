@@ -7,7 +7,6 @@ import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserProfile, setUserPhoto } from '../../redux/actions/profileActions';
 import { useParams } from 'react-router-dom';
-import { profileAPI } from '../../api/api';
 import ElementLoader from '../common/ElementLoader/ElementLoader';
 
 const pathSvgInput = <>
@@ -34,7 +33,8 @@ const Profile = () => {
         photo,
         authId,
         contacts,
-        photosLoader
+        photosLoader,
+        aboutMe
     } = useSelector(state => {
         const p = state.profile;
         return {
@@ -47,7 +47,8 @@ const Profile = () => {
             photo: p.photos.large,
             authId: state.auth.authUser.userId,
             contacts: p.contacts,
-            photosLoader: p.photosLoader
+            photosLoader: p.photosLoader,
+            aboutMe: p.aboutMe
         }
     });
     const userId = useParams().userId;
@@ -114,6 +115,9 @@ const Profile = () => {
                     <div className={styles.status}>
                         {status}
                     </div>
+                </div>
+                <div className={styles.items}>
+                    {aboutMe}
                 </div>
                 <Contacts contacts={contacts} />
             </div>

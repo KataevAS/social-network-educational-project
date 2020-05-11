@@ -127,3 +127,16 @@
     font-size: 12px;
     color: #AAA;
 }
+
+
+
+@media (max-width: 500px) {
+    .profileInfo {
+        flex-direction: column;
+    }
+    .boxPhoto {
+        max-width: fit-content;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

@@ -46,4 +46,3 @@ export const setUserPhoto = (file) => (dispatch) => {
         dispatch(offPhotoLoader());
     });
 }
-

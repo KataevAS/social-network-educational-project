@@ -27,6 +27,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(res => res.data.data.photos);
+    },
+
+    setProfileData(data) {
+        return instance.put(`/profile`, data).then(res => JSON.parse(res.config.data));
     }
 }
 

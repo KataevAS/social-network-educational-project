@@ -45,3 +45,29 @@
     margin-left: 5px;
     width: 15px;
 }
+
+.footerContent.width610 {
+    display: none;
+}
+
+
+@media screen and (max-width: 790px) {
+    .footer {
+        font-size: 12px;
+    }
+  }
+
+@media screen and (max-width: 700px) {
+    .footer {
+        font-size: 10px;
+    }
+  }
+
+  @media (max-width: 610px) {
+    .footerContent.width610 {
+        display: flex;
+    }
+    .footerContent.close {
+        display: none;
+    }
+}
