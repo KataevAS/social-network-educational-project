@@ -1,12 +1,47 @@
 .footer {
+    font-size: 14px;
     background-color: #333;
+    color: rgb(201, 201, 201);
 
-    height: 30px;
-    padding: 0 20px;
+    height: 50px;
+    padding: 20px;
 
+    margin-top: 10px;
+}
+
+.footerContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 10px;
+    margin: 0 auto;
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+}
+
+.contacts {
+    display: flex;
+}
+
+.contact {
+    margin-right: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+.linksName {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.links {
+    color: rgb(186, 212, 124);
+    text-decoration: none;
+}
+
+.footerImg {
+    margin-left: 5px;
+    width: 15px;
 }

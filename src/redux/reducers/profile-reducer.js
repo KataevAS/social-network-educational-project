@@ -21,6 +21,7 @@ let initialState = {
         small: null,
         large: null
     },
+    photosLoader: false,
     followed: false,
     isFetching: false
 };
@@ -37,7 +38,7 @@ const profileReducer = (state = initialState, action) => {
                 }
                 return acc;
             }, {});
-            return { ...state, ...action.profile, contacts: arrContacts};
+            return { ...state, ...action.profile, contacts: arrContacts };
         }
 
         case TODO.SET_STATUS: {
@@ -50,6 +51,19 @@ const profileReducer = (state = initialState, action) => {
 
         case TODO.OFF_ISFETCHING: {
             return { ...state, isFetching: false };
+        }
+
+        case TODO.ON_PHOTO_LOADER: {
+            return { ...state, photosLoader: true };
+        }
+
+        case TODO.OFF_PHOTO_LOADER: {
+            console.log("true")
+            return { ...state, photosLoader: false };
+        }
+
+        case TODO.SET_USE_PHOTO: {
+            return { ...state, photos: { ...state.photos, ...action.photos } };
         }
 
         default: return state;

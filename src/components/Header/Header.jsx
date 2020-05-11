@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginOut } from '../../redux/auth-reducer';
+import { loginOut } from '../../redux/reducers/auth-reducer';
+import defaultAvatar from '../../assets/img/defaultAvatar.png';
 
 const Header = () => {
     const [menuStatus, setMenuStatus] = useState(false);
@@ -51,11 +52,10 @@ const Header = () => {
                 <div>
                     {userData.isAuth
                         ? <div className={styles.user} onClick={handleClickMenu}>
-                            <img src={photo.large ? photo.large : '../../assets/img/defaultAvatar.png'} alt='ava' className={styles.ava} />
+                            <img src={photo.large ? photo.large : defaultAvatar} alt='ava' className={styles.ava} />
                             <div className={menuStatus ? styles.menuBtn + " " + styles.menuActive : styles.menuBtn}></div>
                             < div className={menuStatus ? styles.menu + " " + styles.menuActive : styles.menu}>
-                                <div className={styles.menuItems}>Опция 1</div>
-                                <div className={styles.menuItems}>Профиль*</div>
+                                <div className={styles.menuItems}>Настройки профиля</div>
                                 <div className={styles.menuItems} onClick={handleClickLoginOut}>Выйти</div>
                             </div>
                         </div>
@@ -64,7 +64,6 @@ const Header = () => {
                 </div>
 
             </section>
-
         </header >
     );
 }

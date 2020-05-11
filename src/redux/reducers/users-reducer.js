@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { usersAPI } from "../../api/api";
 
 const SET_USERS = 'SET_USERS';
 const SET_MORE_USERS = 'SET_MORE_USERS';

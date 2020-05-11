@@ -18,6 +18,16 @@ export const profileAPI = {
     getStatus(userId) {
         return instance.get(`profile/status/${userId}`).then(response => response.data);
     },
+
+    sendPhoto(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+        return instance.put(`/profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(res => res.data.data.photos);
+    }
 }
 
 

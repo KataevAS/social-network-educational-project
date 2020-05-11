@@ -1,4 +1,4 @@
-import { authAPI, profileAPI } from "../api/api";
+import { authAPI, profileAPI } from "../../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';

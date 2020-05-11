@@ -26,13 +26,17 @@
     user-select: none;
 }
 
+.items:hover {
+    background-color: #9b9a9a;
+}
+
 .active {
     color: white;
     background-color: #333;
 }
 
-.items:active {
-    background-color: #fff;
+.items.active:hover {
+    background-color: #333;
 }
 
 .navbar a {

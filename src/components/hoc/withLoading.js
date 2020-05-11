@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { firstLoadingSPA } from '../../redux/auth-reducer';
+import { firstLoadingSPA } from '../../redux/reducers/auth-reducer';
 import { Redirect } from 'react-router-dom';
 
 let mapStateToProps = (state) => ({

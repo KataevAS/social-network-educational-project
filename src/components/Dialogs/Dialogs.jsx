@@ -1,17 +1,10 @@
 import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
-const Dialogs = (props) => {
+const Dialogs = () => {
     return (
         <div>Dialogs</div>
     );
 }
 
-
-
-export default compose(
-    connect(null, null),
-    withAuthRedirect
-    )(Dialogs);
+export default withAuthRedirect(Dialogs);
